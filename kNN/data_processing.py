@@ -25,14 +25,14 @@ def file_to_matrix(file_name):
     with open(file_name, 'r') as fin:
         lines = fin.readlines()
         
-    data_set = np.zeros((len(lines), 3))
+    dataset = np.zeros((len(lines), 3))
     class_labels = []
     for index, line in enumerate(lines):
         list_from_line = line.strip().split('\t')       
-        data_set[index, :] = list_from_line[0: 3]
+        dataset[index, :] = list_from_line[0: 3]
         class_labels.append(get_label_id(list_from_line[-1]))
         # class_labels.append(list_from_line[-1])
-    return data_set, class_labels
+    return dataset, class_labels
     
 def auto_norm(dataset):
     vals_min = dataset.min(axis=0)
